@@ -1,18 +1,16 @@
-version: "3.8"
-
 volumes:
   mariadb:
     name: mariadb
     driver: local
     driver_opts:
-      device: ~/goinfre/data/mariadb
+      device: /home/mjuicha/data/mariadb
       o : bind
       type : none
   wordpress:
     name: wordpress
     driver: local
     driver_opts:
-      device: ~/goinfre/data/wordpress
+      device: /home/mjuicha/data/wordpress
       o : bind
       type : none
 
@@ -23,7 +21,7 @@ networks:
 services:
 #mariadb
   mariadb:
-    image: mariadb:afatir
+    image: mariadb:mjuicha
     container_name: mariadb
     build: ./requirements/mariadb
     volumes:
@@ -35,7 +33,7 @@ services:
     restart: always
 #nginx
   nginx:
-    image: nginx:afatir
+    image: nginx:mjuicha
     container_name: nginx
     build: ./requirements/nginx
     ports:
@@ -49,7 +47,7 @@ services:
     restart: always
 #wordpress
   wordpress:
-    image: wordpress:afatir
+    image: wordpress:mjuicha
     container_name: wordpress
     build: ./requirements/wordpress
     depends_on:
